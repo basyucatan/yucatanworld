@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Yucatán World | Agencia de Viajes en Mérida</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <meta name="description" id="pageDescription" content="Paquetes turísticos, tours y experiencias desde Mérida a los mejores destinos de México e internacionales.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="contenedor top-bar-wrapper">
+            <div class="top-info">
+                <span><i class="fas fa-map-marker-alt"></i> <span class="lang-es">Tus viajes en Mérida</span><span class="lang-en">Your trips in Merida</span></span>
+                <a href="tel:+529992435427" class="phone-link"><i class="fas fa-phone"></i> +52 999 243 5427</a>
+            </div>
+            <div class="language-switcher">
+                <button data-lang="es" class="lang-btn active">
+                    <img src="img/es.png" alt="Español" width="20" height="14" onerror="this.style.display='none'"> ES
+                </button>
+                <button data-lang="en" class="lang-btn">
+                    <img src="img/en.png" alt="English" width="20" height="14" onerror="this.style.display='none'"> EN
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER & NAV -->
+    <header class="header-nav" id="mainHeader">
+        <div class="contenedor nav-wrapper">
+            <a href="#" class="logo">
+                <img src="img/logo.png" alt="Yucatán World Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span class="logo-fallback">Yucatán<span>World</span></span>
+            </a>
+
+            <nav class="nav-desktop">
+                <ul>
+                    <li><a href="#promociones"><span class="lang-es">Promociones</span><span class="lang-en">Deals</span></a></li>
+                    <li><a href="#destinos"><span class="lang-es">Destinos</span><span class="lang-en">Destinations</span></a></li>
+                    <li><a href="#sucursal"><span class="lang-es">Sucursal</span><span class="lang-en">Branch</span></a></li>
+                    <li><a href="#contacto"><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="https://wa.me/529992435427?text=Hola,%20me%20gustaría%20cotizar%20un%20viaje" target="_blank" class="btn btn-whatsapp-header">
+                    <i class="fab fa-whatsapp"></i> <span><span class="lang-es">Cotizar</span><span class="lang-en">Quote</span></span>
+                </a>
+                <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Abrir menú">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MENÚ MÓVIL -->
+    <div class="mobile-nav-panel" id="mobilePanel">
+        <button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button>
+        <ul>
+            <li><a href="#promociones" class="mobile-link"><span class="lang-es">Promociones</span><span class="lang-en">Deals</span></a></li>
+            <li><a href="#destinos" class="mobile-link"><span class="lang-es">Destinos</span><span class="lang-en">Destinations</span></a></li>
+            <li><a href="#sucursal" class="mobile-link"><span class="lang-es">Sucursal Mérida</span><span class="lang-en">Merida Branch</span></a></li>
+            <li><a href="#contacto" class="mobile-link"><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></a></li>
+        </ul>
+    </div>
+
+    <!-- CARROUSEL / SLIDER DE BANNERS (DINÁMICO DESDE DATA_SLIDES) -->
+    <section id="promociones" class="hero-carousel">
+        <div class="carousel-container" id="carouselContainer"></div>
+
+        <button class="carousel-btn prev" id="prevSlide" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-btn next" id="nextSlide" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+
+        <div class="carousel-dots" id="carouselDots"></div>
+    </section>
+
+    <!-- DESTINOS DE INTERÉS (DINÁMICO DESDE DATA_DESTINOS) -->
+    <section id="destinos" class="seccion bg-light">
+        <div class="contenedor">
+            <div class="section-header" data-animate>
+                <h2>
+                    <span class="lang-es">Destinos Destacados</span>
+                    <span class="lang-en">Featured Destinations</span>
+                </h2>
+                <p>
+                    <span class="lang-es">Diseñamos la experiencia perfecta saliendo desde Mérida hacia cualquier punto de México.</span>
+                    <span class="lang-en">We design the perfect experience departing from Merida to anywhere in Mexico.</span>
+                </p>
+            </div>
+
+            <div class="grid-destinos" id="gridDestinos"></div>
+        </div>
+    </section>
+
+    <!-- SUCURSAL (DINÁMICO DESDE DATA_SUCURSAL) -->
+    <section id="sucursal" class="seccion branch-section">
+        <div class="contenedor">
+            <div class="branch-grid">
+                <div class="branch-info" data-animate>
+                    <span class="sub-title"><span class="lang-es">Atención Personalizada</span><span class="lang-en">Personalized Service</span></span>
+                    <h2><span class="lang-es">Visita nuestras oficinas en Mérida</span><span class="lang-en">Visit our Merida Branch</span></h2>
+                    <p class="branch-desc">
+                        <span class="lang-es">Planifica tu próximo viaje con la ayuda de nuestros asesores expertos. Te ayudamos a armar itinerarios a medida, paquetes corporativos o vacaciones familiares.</span>
+                        <span class="lang-en">Plan your next trip with our expert advisors. We build custom itineraries, corporate packages, and family vacations.</span>
+                    </p>
+                    
+                    <ul class="branch-details">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong><span class="lang-es">Dirección</span><span class="lang-en">Address</span></strong>
+                                <p id="sucursalDireccion"></p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <strong><span class="lang-es">Teléfono / WhatsApp</span><span class="lang-en">Phone / WhatsApp</span></strong>
+                                <p><a href="#" id="sucursalTelefono"></a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-globe"></i>
+                            <div>
+                                <strong><span class="lang-es">Sitio Web Oficial</span><span class="lang-en">Official Website</span></strong>
+                                <p><a href="#" target="_blank" id="sucursalWeb"></a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong><span class="lang-es">Horarios</span><span class="lang-en">Hours</span></strong>
+                                <p id="sucursalHorarios"></p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <a href="https://wa.me/529992435427" target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> <span class="lang-es">Hablar con un asesor</span><span class="lang-en">Chat with an advisor</span>
+                    </a>
+                </div>
+
+                <div class="branch-map" data-animate>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3725.3115244523506!2d-89.602176!3d20.980145999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDU4JzQ4LjUiTiA4OcKwMzYnMDcuOCJX!5e0!3m2!1ses-419!2smx!4v1786752513118!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE CONTACTO (POST A guardar_contacto.php) -->
+    <form action="guardar_contacto.php" method="POST" class="formulario-contacto" id="mainContactForm">
+        <!-- Campo Honeypot para despistar bots -->
+        <div style="display:none !important;" aria-hidden="true">
+            <label for="website">No llenar este campo</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+    
+        <!-- Timestamp para validar que no sea un envío instantáneo -->
+        <input type="hidden" name="form_time" value="<?php echo time(); ?>">
+    
+        <div class="form-row">
+            <div class="campo">
+                <label for="name"><span class="lang-es">Nombre Completo *</span><span class="lang-en">Full Name *</span></label>
+                <input type="text" id="name" name="name" placeholder="Ej. Ana Gómez" required>
+            </div>
+            <div class="campo">
+                <label for="email"><span class="lang-es">Correo Electrónico *</span><span class="lang-en">Email Address *</span></label>
+                <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="campo">
+                <label for="telefono"><span class="lang-es">Teléfono / WhatsApp</span><span class="lang-en">Phone / WhatsApp</span></label>
+                <input type="tel" id="telefono" name="telefono" placeholder="999 123 4567">
+            </div>
+            <div class="campo">
+                <label for="destino_interes"><span class="lang-es">Destino de Interés</span><span class="lang-en">Destination of Interest</span></label>
+                <input type="text" id="destino_interes" name="destino_interes" placeholder="Ej. Guadalajara, CDMX...">
+            </div>
+        </div>
+        <div class="campo">
+            <label for="message"><span class="lang-es">Mensaje / Detalles del Viaje *</span><span class="lang-en">Message / Trip Details *</span></label>
+            <textarea id="message" name="message" rows="4" placeholder="Cuéntanos tus planes, fechas probables o dudas..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primario btn-block">
+            <i class="fas fa-paper-plane"></i> <span class="lang-es">Enviar Solicitud</span><span class="lang-en">Send Request</span>
+        </button>
+    </form>
+    <br>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="contenedor footer-wrapper">
+            <div class="footer-col">
+                <a href="#" class="logo footer-logo">
+                    <span class="logo-fallback">Yucatán<span>World</span></span>
+                </a>
+                <p><span class="lang-es">Tu agencia de viajes de confianza en Mérida, Yucatán. Diseñamos tus mejores experiencias.</span><span class="lang-en">Your trusted travel agency in Merida, Yucatan. Designing your best experiences.</span></p>
+                <p class="web-url">www.yucatan.world</p>
+            </div>
+            <div class="footer-col">
+                <h4><span class="lang-es">Destinos Populares</span><span class="lang-en">Popular Destinations</span></h4>
+                <ul>
+                    <li><a href="#contacto">Ciudad de México</a></li>
+                    <li><a href="#contacto">Guadalajara</a></li>
+                    <li><a href="#contacto">Monterrey</a></li>
+                    <li><a href="#contacto">Puerto Vallarta</a></li>
+                    <li><a href="#contacto">Oaxaca</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4><span class="lang-es">Contacto Directo</span><span class="lang-en">Direct Contact</span></h4>
+                <p><i class="fas fa-phone"></i> +52 999 243 5427</p>
+                <p><i class="fas fa-envelope"></i> contacto@yucatanworld.com</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/529992435427" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="contenedor">
+                <p>&copy; 2026 Yucatán World. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/529961010862?text=Hola,%20me%20interesa%20recibir%20información%20sobre%20sus%20paquetes" class="float-whatsapp" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
