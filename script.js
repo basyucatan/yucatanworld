@@ -2,135 +2,7 @@
    CONFIGURACIÓN Y DATA DE CONTENIDOS (FÁCILMENTE EDITABLE)
    ========================================================================== */
 
-// 1. Carrusel / Slider
-const DATA_SLIDES = [
-    {
-        badge: { es: "Oferta Especial", en: "Special Offer" },
-        badgeIcon: "fa-fire",
-        titulo: { es: "Descubre la Magia de <em>CDMX</em>", en: "Discover the Magic of <em>CDMX</em>" },
-        descripcion: { 
-            es: "Paquetes de fin de semana con hospedaje en zonas exclusivas y tours culturales.", 
-            en: "Weekend packages including luxury hotel stay and tour experiences." 
-        },
-        btnTexto: { es: "Solicitar Oferta", en: "Claim Deal" },
-        destinoTag: "CDMX - Oferta Especial",
-        imagen: "img/cdmx.jpg",
-        imagenFallback: "https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=1920&q=80"
-    },
-    {
-        badge: { es: "Tradición & Tequila", en: "Tradition & Tequila" },
-        badgeIcon: "fa-glass-cheers",
-        titulo: { es: "Siente el Alma de <em>Guadalajara</em>", en: "Feel the Soul of <em>Guadalajara</em>" },
-        descripcion: { 
-            es: "Recorridos por tequila, charrería y la arquitectura histórica de Jalisco.", 
-            en: "Tours through tequila region, charrería and historic architecture." 
-        },
-        btnTexto: { es: "Cotizar Viaje", en: "Quote Trip" },
-        destinoTag: "Guadalajara - Ruta Tequila",
-        imagen: "img/guadalajara.jpg",
-        imagenFallback: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=1920&q=80"
-    },
-    {
-        badge: { es: "Negocios & Naturaleza", en: "Business & Nature" },
-        badgeIcon: "fa-mountain",
-        titulo: { es: "Conecta con <em>Monterrey</em>", en: "Connect with <em>Monterrey</em>" },
-        descripcion: { 
-            es: "La combinación perfecta entre innovación urbana y aventuras de montaña.", 
-            en: "The perfect mix between urban innovation and mountain adventures." 
-        },
-        btnTexto: { es: "Ver Paquetes", en: "View Packages" },
-        destinoTag: "Monterrey - Escapada Urbana",
-        imagen: "img/monterrey.jpg",
-        imagenFallback: "https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?auto=format&fit=crop&w=1920&q=80"
-    },
-    {
-        badge: { es: "Ruta Gastronómica", en: "Culinary Tour" },
-        badgeIcon: "fa-utensils",
-        titulo: { es: "Vive la Cultura de <em>Oaxaca</em>", en: "Experience the Culture of <em>Oaxaca</em>" },
-        descripcion: { 
-            es: "Tradición, gastronomía única y artesanías en un tour inolvidable.", 
-            en: "Tradition, unique gastronomy, and crafts on an unforgettable tour." 
-        },
-        btnTexto: { es: "Más Información", en: "More Info" },
-        destinoTag: "Oaxaca - Tour Cultural",
-        imagen: "img/oaxaca.jpg",
-        imagenFallback: "https://images.unsplash.com/photo-1568402102990-bc541580b59f?auto=format&fit=crop&w=1920&q=80"
-    },
-    {
-        badge: { es: "Playa & Sol", en: "Beach & Sun" },
-        badgeIcon: "fa-sun",
-        titulo: { es: "Escape a <em>Puerto Vallarta</em>", en: "Escape to <em>Puerto Vallarta</em>" },
-        descripcion: { 
-            es: "Resorts todo incluido para disfrutar en familia o en pareja.", 
-            en: "All-inclusive resorts to enjoy with family or as a couple." 
-        },
-        btnTexto: { es: "Cotizar Paquete", en: "Quote Package" },
-        destinoTag: "Puerto Vallarta - All Inclusive",
-        imagen: "img/vallarta.jpg",
-        imagenFallback: "https://images.unsplash.com/photo-1512813195386-6cf811ad3542?auto=format&fit=crop&w=1920&q=80"
-    },
-    {
-        badge: { es: "Aventura Ecoturística", en: "Eco-Adventure" },
-        badgeIcon: "fa-tree",
-        titulo: { es: "Explora la Selva de <em>Chiapas</em>", en: "Explore the Jungle of <em>Chiapas</em>" },
-        descripcion: { 
-            es: "Maravíllate con el Cañón del Sumidero y las cascadas de agua azul.", 
-            en: "Marvel at the Sumidero Canyon and pristine blue waterfalls." 
-        },
-        btnTexto: { es: "Reservar Ahora", en: "Book Now" },
-        destinoTag: "Chiapas - Ruta Aventura",
-        imagen: "img/tuxtla.jpg",
-        imagenFallback: "https://images.unsplash.com/photo-1508873696983-2df515122519?auto=format&fit=crop&w=1920&q=80"
-    }
-];
-
-// 2. Catálogo de Destinos
-const DATA_DESTINOS = [
-    {
-        titulo: "CDMX",
-        tag: "Modernidad",
-        info: { es: "Cultura, Gastronomía y Compras", en: "Culture, Cuisine & Shopping" },
-        imagen: "img/cdmx.jpg",
-        imagenFallback: "https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-        titulo: "Guadalajara",
-        tag: "Tradición",
-        info: { es: "Tequila, Mariachi y Negocios", en: "Tequila, Mariachi & Business" },
-        imagen: "img/guadalajara.jpg",
-        imagenFallback: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-        titulo: "Monterrey",
-        tag: "Progreso",
-        info: { es: "Montañas, Parques y Modernidad", en: "Mountains, Parks & Modernity" },
-        imagen: "img/monterrey.jpg",
-        imagenFallback: "https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-        titulo: "Oaxaca",
-        tag: "Cultura",
-        info: { es: "Mezcal, Tradición y Arte", en: "Mezcal, Tradition & Art" },
-        imagen: "img/oaxaca.jpg",
-        imagenFallback: "https://images.unsplash.com/photo-1568402102990-bc541580b59f?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-        titulo: "Puerto Vallarta",
-        tag: "Playa",
-        info: { es: "Atardeceres, Playa y Relax", en: "Sunsets, Beach & Relaxation" },
-        imagen: "img/vallarta.jpg",
-        imagenFallback: "https://images.unsplash.com/photo-1512813195386-6cf811ad3542?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-        titulo: "Chiapas",
-        tag: "Aventura",
-        info: { es: "Cañón del Sumidero y Selva", en: "Sumidero Canyon & Jungle" },
-        imagen: "img/tuxtla.jpg",
-        imagenFallback: "https://images.unsplash.com/photo-1508873696983-2df515122519?auto=format&fit=crop&w=800&q=80"
-    }
-];
-
-// 3. Información Sucursal
+// Información Sucursal
 const DATA_SUCURSAL = {
     direccion: "Calle 39 No. 460 local 7, Col. Máximo Ancona, Mérida, Yucatán, México",
     telefono: "+52 999 243 5427",
@@ -140,20 +12,18 @@ const DATA_SUCURSAL = {
     horarios: "Lun - Vie: 9:00 AM - 7:00 PM | Sáb: 10:00 AM - 2:00 PM"
 };
 
+const FALLBACK_IMAGE = 'img/imgFallida.jpg';
 
 /* ==========================================================================
-   RENDERIZADO Y LÓGICA DE INTERACCIÓN
+   INICIALIZACIÓN Y LÓGICA DE INTERACCIÓN
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // RENDER 1: Carrusel / Banners
-    renderCarousel();
+    // Carga inicial de datos desde el endpoint PHP
+    cargarDatosLanding();
 
-    // RENDER 2: Destinos
-    renderDestinos();
-
-    // RENDER 3: Datos de Sucursal
+    // RENDER Datos de Sucursal
     renderSucursal();
 
     // Lógica del Header Sticky
@@ -214,67 +84,30 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
 });
 
+/* ==========================================================================
+   CARGA DE DATOS ASÍNCRONA
+   ========================================================================== */
+
+async function cargarDatosLanding() {
+    try {
+        const response = await fetch('api_slides.php');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        renderCarousel(data.slides || []);
+        renderDestinos(data.destinos || []);
+    } catch (error) {
+        console.error('Error al cargar la información:', error);
+        renderCarousel([]);
+        renderDestinos([]);
+    }
+}
 
 /* ==========================================================================
    FUNCIONES AUXILIARES DE RENDERIZADO
    ========================================================================== */
-
-function renderCarousel() {
-    const container = document.getElementById('carouselContainer');
-    if (!container) return;
-
-    container.innerHTML = DATA_SLIDES.map((slide, idx) => `
-        <div class="slide ${idx === 0 ? 'active' : ''}" style="background-image: url('${slide.imagen}'), url('${slide.imagenFallback}');">
-            <div class="slide-overlay"></div>
-            <div class="contenedor slide-content">
-                <span class="badge-promo"><i class="fas ${slide.badgeIcon}"></i> 
-                    <span class="lang-es">${slide.badge.es}</span>
-                    <span class="lang-en">${slide.badge.en}</span>
-                </span>
-                <h1>
-                    <span class="lang-es">${slide.titulo.es}</span>
-                    <span class="lang-en">${slide.titulo.en}</span>
-                </h1>
-                <p>
-                    <span class="lang-es">${slide.descripcion.es}</span>
-                    <span class="lang-en">${slide.descripcion.en}</span>
-                </p>
-                <a href="#contacto" class="btn btn-accent btn-slide" data-dest="${slide.destinoTag}">
-                    <i class="fas fa-paper-plane"></i> 
-                    <span class="lang-es">${slide.btnTexto.es}</span>
-                    <span class="lang-en">${slide.btnTexto.en}</span>
-                </a>
-            </div>
-        </div>
-    `).join('');
-
-    iniciarLogicaCarousel();
-}
-
-function renderDestinos() {
-    const grid = document.getElementById('gridDestinos');
-    if (!grid) return;
-
-    grid.innerHTML = DATA_DESTINOS.map(dest => `
-        <article class="card-destino" data-animate>
-            <div class="card-media">
-                <img src="${dest.imagen}" alt="${dest.titulo}" onerror="this.src='${dest.imagenFallback}'">
-                <span class="tag-flight">${dest.tag}</span>
-            </div>
-            <div class="card-body">
-                <h3>${dest.titulo}</h3>
-                <p class="route-info"><i class="fas fa-star"></i> 
-                    <span class="lang-es">${dest.info.es}</span>
-                    <span class="lang-en">${dest.info.en}</span>
-                </p>
-                <a href="#contacto" class="btn btn-outline" data-dest="${dest.titulo}">
-                    <span class="lang-es">Cotizar Viaje</span>
-                    <span class="lang-en">Quote Trip</span>
-                </a>
-            </div>
-        </article>
-    `).join('');
-}
 
 function renderSucursal() {
     const elDireccion = document.getElementById('sucursalDireccion');
@@ -292,6 +125,89 @@ function renderSucursal() {
         elWeb.setAttribute('href', DATA_SUCURSAL.webUrl);
     }
     if (elHorario) elHorario.textContent = DATA_SUCURSAL.horarios;
+}
+
+function renderCarousel(slides = []) {
+    const container = document.getElementById('carouselContainer');
+    if (!container) return;
+
+    const listaSlides = Array.isArray(slides) ? slides : [];
+
+    if (listaSlides.length === 0) {
+        container.innerHTML = '<p class="text-center">No hay promociones disponibles.</p>';
+        return;
+    }
+
+    container.innerHTML = listaSlides.map((slide, idx) => {
+        const rutaImg = slide.imagen || FALLBACK_IMAGE;
+        return `
+            <div class="slide ${idx === 0 ? 'active' : ''}" style="background-image: url('${rutaImg}'), url('${FALLBACK_IMAGE}');">
+                <div class="slide-overlay"></div>
+                <div class="contenedor slide-content">
+                    <span class="badge-promo"><i class="fas ${slide.badgeIcon || 'fa-star'}"></i> 
+                        <span class="lang-es">${slide.badge?.es || ''}</span>
+                        <span class="lang-en">${slide.badge?.en || ''}</span>
+                    </span>
+                    <h1>
+                        <span class="lang-es">${slide.titulo?.es || ''}</span>
+                        <span class="lang-en">${slide.titulo?.en || ''}</span>
+                    </h1>
+                    <p>
+                        <span class="lang-es">${slide.descripcion?.es || ''}</span>
+                        <span class="lang-en">${slide.descripcion?.en || ''}</span>
+                    </p>
+                    <a href="#contacto" class="btn btn-accent btn-slide" data-dest="${slide.destinoTag || ''}">
+                        <i class="fas fa-paper-plane"></i> 
+                        <span class="lang-es">${slide.btnTexto?.es || ''}</span>
+                        <span class="lang-en">${slide.btnTexto?.en || ''}</span>
+                    </a>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    iniciarLogicaCarousel();
+}
+
+function renderDestinos(destinos = []) {
+    const grid = document.getElementById('gridDestinos');
+    if (!grid) return;
+
+    const listaDestinos = Array.isArray(destinos) ? destinos : [];
+
+    if (listaDestinos.length === 0) {
+        grid.innerHTML = '<p class="text-center">No hay destinos disponibles por el momento.</p>';
+        return;
+    }
+
+    grid.innerHTML = listaDestinos.map(dest => `
+        <article class="card-destino" data-animate>
+            <div class="card-media">
+                <img src="${dest.imagen || FALLBACK_IMAGE}" alt="${dest.titulo || ''}" onerror="this.onerror=null; this.src='${FALLBACK_IMAGE}';">
+                <span class="tag-flight">${dest.tag || ''}</span>
+            </div>
+            <div class="card-body">
+                <h3>${dest.titulo || ''}</h3>
+                <p class="route-info"><i class="fas fa-star"></i> 
+                    <span class="lang-es">${dest.info?.es || ''}</span>
+                    <span class="lang-en">${dest.info?.en || ''}</span>
+                </p>
+                <a href="#contacto" class="btn btn-outline" data-dest="${dest.titulo || ''}">
+                    <span class="lang-es">Cotizar Viaje</span>
+                    <span class="lang-en">Quote Trip</span>
+                </a>
+            </div>
+        </article>
+    `).join('');
+
+    // Re-vincular elementos recién creados con el Observer de animaciones
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('animated');
+        });
+    }, { threshold: 0.15 });
+
+    grid.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
 }
 
 function iniciarLogicaCarousel() {

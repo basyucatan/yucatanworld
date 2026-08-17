@@ -1,0 +1,198 @@
+{
+    "slides": [
+        {
+            "id": "slide_cdmx",
+            "badge": {
+                "es": "Inagotables Experiencias",
+                "en": "Endless Experiences"
+            },
+            "badgeIcon": "fa-fire",
+            "titulo": {
+                "es": "Descubre la Magia de <em>CDMX<\/em>",
+                "en": "Discover the Magic of <em>CDMX<\/em>"
+            },
+            "descripcion": {
+                "es": "Paquetes de fin de semana con hospedaje en zonas exclusivas y tours culturales.",
+                "en": "Weekend packages including luxury hotel stay and tour experiences."
+            },
+            "btnTexto": {
+                "es": "Solicitar Oferta",
+                "en": "Claim Deal"
+            },
+            "destinoTag": "CDMX - Oferta Especial",
+            "imagen": "img\/slide_1786929300.jpg"
+        },
+        {
+            "id": "slide_guadalajara",
+            "badge": {
+                "es": "Tradición & Tequila",
+                "en": "Tradition & Tequila"
+            },
+            "badgeIcon": "fa-glass-cheers",
+            "titulo": {
+                "es": "Siente el Alma de <em>Guadalajara<\/em>",
+                "en": "Feel the Soul of <em>Guadalajara<\/em>"
+            },
+            "descripcion": {
+                "es": "Recorridos por tequila, charrería y la arquitectura histórica de Jalisco.",
+                "en": "Tours through tequila region, charrería and historic architecture."
+            },
+            "btnTexto": {
+                "es": "Cotizar Viaje",
+                "en": "Quote Trip"
+            },
+            "destinoTag": "Guadalajara - Ruta Tequila",
+            "imagen": "img\/guadalajara.jpg"
+        },
+        {
+            "id": "slide_monterrey",
+            "badge": {
+                "es": "Negocios & Naturaleza",
+                "en": "Business & Nature"
+            },
+            "badgeIcon": "fa-mountain",
+            "titulo": {
+                "es": "Conecta con <em>Monterrey<\/em>",
+                "en": "Connect with <em>Monterrey<\/em>"
+            },
+            "descripcion": {
+                "es": "La combinación perfecta entre innovación urbana y aventuras de montaña.",
+                "en": "The perfect mix between urban innovation and mountain adventures."
+            },
+            "btnTexto": {
+                "es": "Ver Paquetes",
+                "en": "View Packages"
+            },
+            "destinoTag": "Monterrey - Escapada Urbana",
+            "imagen": "img\/monterrey.jpg"
+        },
+        {
+            "id": "slide_oaxaca",
+            "badge": {
+                "es": "Ruta Gastronómica",
+                "en": "Culinary Tour"
+            },
+            "badgeIcon": "fa-utensils",
+            "titulo": {
+                "es": "Vive la Cultura de <em>Oaxaca<\/em>",
+                "en": "Experience the Culture of <em>Oaxaca<\/em>"
+            },
+            "descripcion": {
+                "es": "Tradición, gastronomía única y artesanías en un tour inolvidable.",
+                "en": "Tradition, unique gastronomy, and crafts on an unforgettable tour."
+            },
+            "btnTexto": {
+                "es": "Más Información",
+                "en": "More Info"
+            },
+            "destinoTag": "Oaxaca - Tour Cultural",
+            "imagen": "img\/oaxaca.jpg"
+        },
+        {
+            "id": "slide_vallarta",
+            "badge": {
+                "es": "Playa & Sol",
+                "en": "Beach & Sun"
+            },
+            "badgeIcon": "fa-sun",
+            "titulo": {
+                "es": "Escape a <em>Puerto Vallarta<\/em>",
+                "en": "Escape to <em>Puerto Vallarta<\/em>"
+            },
+            "descripcion": {
+                "es": "Resorts todo incluido para disfrutar en familia o en pareja.",
+                "en": "All-inclusive resorts to enjoy with family or as a couple."
+            },
+            "btnTexto": {
+                "es": "Cotizar Paquete",
+                "en": "Quote Package"
+            },
+            "destinoTag": "Puerto Vallarta - All Inclusive",
+            "imagen": "img\/vallarta.jpg"
+        },
+        {
+            "id": "slide_chiapas",
+            "badge": {
+                "es": "Aventura Ecoturística",
+                "en": "Eco-Adventure"
+            },
+            "badgeIcon": "fa-tree",
+            "titulo": {
+                "es": "Explora la Selva de <em>Chiapas<\/em>",
+                "en": "Explore the Jungle of <em>Chiapas<\/em>"
+            },
+            "descripcion": {
+                "es": "Maravíllate con el Cañón del Sumidero y las cascadas de agua azul.",
+                "en": "Marvel at the Sumidero Canyon and pristine blue waterfalls."
+            },
+            "btnTexto": {
+                "es": "Reservar Ahora",
+                "en": "Book Now"
+            },
+            "destinoTag": "Chiapas - Ruta Aventura",
+            "imagen": "img\/tuxtla.jpg"
+        }
+    ],
+    "destinos": [
+        {
+            "id": "dest_cdmx",
+            "titulo": "CDMX",
+            "tag": "Modernidad",
+            "info": {
+                "es": "Cultura, Gastronomía y Compras",
+                "en": "Culture, Cuisine & Shopping"
+            },
+            "imagen": "img\/cdmx.jpg"
+        },
+        {
+            "id": "dest_guadalajara",
+            "titulo": "Guadalajara",
+            "tag": "Tradición",
+            "info": {
+                "es": "Tequila, Mariachi y Negocios",
+                "en": "Tequila, Mariachi & Business"
+            },
+            "imagen": "img\/guadalajara.jpg"
+        },
+        {
+            "id": "dest_monterrey",
+            "titulo": "Monterrey",
+            "tag": "Progreso",
+            "info": {
+                "es": "Montañas, Parques y Modernidad",
+                "en": "Mountains, Parks & Modernity"
+            },
+            "imagen": "img\/monterrey.jpg"
+        },
+        {
+            "id": "dest_oaxaca",
+            "titulo": "Oaxaca",
+            "tag": "Cultura",
+            "info": {
+                "es": "Mezcal, Tradición y Arte",
+                "en": "Mezcal, Tradition & Art"
+            },
+            "imagen": "img\/oaxaca.jpg"
+        },
+        {
+            "id": "dest_vallarta",
+            "titulo": "Puerto Vallarta",
+            "tag": "Playa",
+            "info": {
+                "es": "Atardeceres, Playa y Relax",
+                "en": "Sunsets, Beach & Relaxation"
+            },
+            "imagen": "img\/vallarta.jpg"
+        },
+        {
+            "id": "dest_chiapas",
+            "titulo": "Chiapas",
+            "tag": "Aventura",
+            "info": {
+                "es": "Cañón del Sumidero y Selva",
+                "en": "Sumidero Canyon & Jungle"
+            },
+            "imagen": "img\/tuxtla.jpg"
+        }
+    ]
+}
