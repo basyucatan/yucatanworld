@@ -46,7 +46,13 @@ if (isset($_GET['edit_destino'])) {
     
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2><i class="fas fa-sliders-h me-2"></i> Panel de Configuración</h2>
-        <a href="../" target="_blank" class="btn btn-outline-primary"><i class="fas fa-external-link-alt"></i> Ver Landing Page</a>
+        <div class="d-flex align-items-center gap-3">
+            <div class="btn-group btn-group-sm" role="group">
+                <button type="button" class="btn btn-primary active lang-btn" data-lang="es">Español (ES)</button>
+                <button type="button" class="btn btn-outline-primary lang-btn" data-lang="en">English (EN)</button>
+            </div>
+            <a href="../" target="_blank" class="btn btn-outline-primary btn-sm"><i class="fas fa-external-link-alt"></i> Ver Landing Page</a>
+        </div>
     </div>
 
     <!-- PESTAÑAS -->
@@ -76,15 +82,13 @@ if (isset($_GET['edit_destino'])) {
                         <input type="hidden" name="tipo" value="slide">
                         <input type="hidden" name="id" value="<?= $editSlide['id'] ?? '' ?>">
 
-                        <div class="row g-2 mb-2">
-                            <div class="col-6">
-                                <label class="form-label small">Badge (ES)</label>
-                                <input type="text" class="form-control form-control-sm" name="badge_es" value="<?= $editSlide['badge']['es'] ?? '' ?>" required>
-                            </div>
-                            <div class="col-6">
-                                <label class="form-label small">Badge (EN)</label>
-                                <input type="text" class="form-control form-control-sm" name="badge_en" value="<?= $editSlide['badge']['en'] ?? '' ?>" required>
-                            </div>
+                        <div class="mb-2 lang-es-field">
+                            <label class="form-label small">Badge (ES)</label>
+                            <input type="text" class="form-control form-control-sm" name="badge_es" value="<?= $editSlide['badge']['es'] ?? '' ?>" required>
+                        </div>
+                        <div class="mb-2 lang-en-field">
+                            <label class="form-label small">Badge (EN)</label>
+                            <input type="text" class="form-control form-control-sm" name="badge_en" value="<?= $editSlide['badge']['en'] ?? '' ?>">
                         </div>
 
                         <div class="mb-2">
@@ -92,37 +96,31 @@ if (isset($_GET['edit_destino'])) {
                             <input type="text" class="form-control form-control-sm" name="badgeIcon" value="<?= $editSlide['badgeIcon'] ?? 'fa-fire' ?>" required>
                         </div>
 
-                        <div class="row g-2 mb-2">
-                            <div class="col-6">
-                                <label class="form-label small">Título (ES)</label>
-                                <input type="text" class="form-control form-control-sm" name="titulo_es" value="<?= $editSlide['titulo']['es'] ?? '' ?>" required>
-                            </div>
-                            <div class="col-6">
-                                <label class="form-label small">Título (EN)</label>
-                                <input type="text" class="form-control form-control-sm" name="titulo_en" value="<?= $editSlide['titulo']['en'] ?? '' ?>" required>
-                            </div>
+                        <div class="mb-2 lang-es-field">
+                            <label class="form-label small">Título (ES)</label>
+                            <input type="text" class="form-control form-control-sm" name="titulo_es" value="<?= $editSlide['titulo']['es'] ?? '' ?>" required>
+                        </div>
+                        <div class="mb-2 lang-en-field">
+                            <label class="form-label small">Título (EN)</label>
+                            <input type="text" class="form-control form-control-sm" name="titulo_en" value="<?= $editSlide['titulo']['en'] ?? '' ?>">
                         </div>
 
-                        <div class="row g-2 mb-2">
-                            <div class="col-6">
-                                <label class="form-label small">Descripción (ES)</label>
-                                <textarea class="form-control form-control-sm" name="desc_es" rows="2" required><?= $editSlide['descripcion']['es'] ?? '' ?></textarea>
-                            </div>
-                            <div class="col-6">
-                                <label class="form-label small">Descripción (EN)</label>
-                                <textarea class="form-control form-control-sm" name="desc_en" rows="2" required><?= $editSlide['descripcion']['en'] ?? '' ?></textarea>
-                            </div>
+                        <div class="mb-2 lang-es-field">
+                            <label class="form-label small">Descripción (ES)</label>
+                            <textarea class="form-control form-control-sm" name="desc_es" rows="2" required><?= $editSlide['descripcion']['es'] ?? '' ?></textarea>
+                        </div>
+                        <div class="mb-2 lang-en-field">
+                            <label class="form-label small">Descripción (EN)</label>
+                            <textarea class="form-control form-control-sm" name="desc_en" rows="2"><?= $editSlide['descripcion']['en'] ?? '' ?></textarea>
                         </div>
 
-                        <div class="row g-2 mb-2">
-                            <div class="col-6">
-                                <label class="form-label small">Texto Botón (ES)</label>
-                                <input type="text" class="form-control form-control-sm" name="btn_es" value="<?= $editSlide['btnTexto']['es'] ?? '' ?>" required>
-                            </div>
-                            <div class="col-6">
-                                <label class="form-label small">Texto Botón (EN)</label>
-                                <input type="text" class="form-control form-control-sm" name="btn_en" value="<?= $editSlide['btnTexto']['en'] ?? '' ?>" required>
-                            </div>
+                        <div class="mb-2 lang-es-field">
+                            <label class="form-label small">Texto Botón (ES)</label>
+                            <input type="text" class="form-control form-control-sm" name="btn_es" value="<?= $editSlide['btnTexto']['es'] ?? '' ?>" required>
+                        </div>
+                        <div class="mb-2 lang-en-field">
+                            <label class="form-label small">Texto Botón (EN)</label>
+                            <input type="text" class="form-control form-control-sm" name="btn_en" value="<?= $editSlide['btnTexto']['en'] ?? '' ?>">
                         </div>
 
                         <div class="mb-3">
@@ -151,7 +149,10 @@ if (isset($_GET['edit_destino'])) {
                         <thead>
                             <tr>
                                 <th>Imagen</th>
-                                <th>Título (ES)</th>
+                                <th>
+                                    <span class="lang-es-field">Título (ES)</span>
+                                    <span class="lang-en-field">Título (EN)</span>
+                                </th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -163,7 +164,10 @@ if (isset($_GET['edit_destino'])) {
                                          width="60" height="40" class="rounded object-fit-cover" 
                                          onerror="this.onerror=null; this.src='../img/imgFallida.jpg';">
                                 </td>
-                                <td><strong><?= strip_tags($s['titulo']['es']) ?></strong></td>
+                                <td>
+                                    <strong class="lang-es-field"><?= strip_tags($s['titulo']['es'] ?? '') ?></strong>
+                                    <strong class="lang-en-field"><?= strip_tags($s['titulo']['en'] ?? '') ?></strong>
+                                </td>
                                 <td>
                                     <a href="index.php?tab=slides&edit_slide=<?= $s['id'] ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                                     <a href="eliminar_slide.php?tipo=slide&id=<?= $s['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar este slide?')"><i class="fas fa-trash"></i></a>
@@ -195,20 +199,22 @@ if (isset($_GET['edit_destino'])) {
                             <input type="text" class="form-control form-control-sm" name="titulo" value="<?= $editDestino['titulo'] ?? '' ?>" required placeholder="Ej: CDMX">
                         </div>
 
-                        <div class="mb-2">
-                            <label class="form-label small">Etiqueta / Tag</label>
-                            <input type="text" class="form-control form-control-sm" name="tag" value="<?= $editDestino['tag'] ?? '' ?>" required placeholder="Ej: Modernidad">
+                        <div class="mb-2 lang-es-field">
+                            <label class="form-label small">Etiqueta (ES)</label>
+                            <input type="text" class="form-control form-control-sm" name="tag_es" value="<?= is_array($editDestino['tag'] ?? null) ? ($editDestino['tag']['es'] ?? '') : ($editDestino['tag'] ?? '') ?>" placeholder="Ej: Modernidad">
+                        </div>
+                        <div class="mb-2 lang-en-field">
+                            <label class="form-label small">Etiqueta (EN)</label>
+                            <input type="text" class="form-control form-control-sm" name="tag_en" value="<?= is_array($editDestino['tag'] ?? null) ? ($editDestino['tag']['en'] ?? '') : '' ?>" placeholder="Ej: Modernity">
                         </div>
 
-                        <div class="row g-2 mb-2">
-                            <div class="col-6">
-                                <label class="form-label small">Info / Atractivos (ES)</label>
-                                <input type="text" class="form-control form-control-sm" name="info_es" value="<?= $editDestino['info']['es'] ?? '' ?>" required>
-                            </div>
-                            <div class="col-6">
-                                <label class="form-label small">Info / Atractivos (EN)</label>
-                                <input type="text" class="form-control form-control-sm" name="info_en" value="<?= $editDestino['info']['en'] ?? '' ?>" required>
-                            </div>
+                        <div class="mb-2 lang-es-field">
+                            <label class="form-label small">Info / Atractivos (ES)</label>
+                            <input type="text" class="form-control form-control-sm" name="info_es" value="<?= $editDestino['info']['es'] ?? '' ?>">
+                        </div>
+                        <div class="mb-2 lang-en-field">
+                            <label class="form-label small">Info / Atractivos (EN)</label>
+                            <input type="text" class="form-control form-control-sm" name="info_en" value="<?= $editDestino['info']['en'] ?? '' ?>">
                         </div>
 
                         <div class="mb-3">
@@ -239,7 +245,6 @@ if (isset($_GET['edit_destino'])) {
                                 <th>Imagen</th>
                                 <th>Título</th>
                                 <th>Tag</th>
-                                <th>Info (ES)</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -252,11 +257,23 @@ if (isset($_GET['edit_destino'])) {
                                          onerror="this.onerror=null; this.src='../img/imgFallida.jpg';">
                                 </td>
                                 <td><strong><?= $d['titulo'] ?></strong></td>
-                                <td><span class="badge bg-secondary"><?= $d['tag'] ?></span></td>
-                                <td><?= $d['info']['es'] ?></td>
+                                <td>
+                                    <span class="badge bg-secondary lang-es-field">
+                                        <?= is_array($d['tag'] ?? null) ? ($d['tag']['es'] ?? '') : $d['tag'] ?>
+                                    </span>
+                                    <span class="badge bg-secondary lang-en-field">
+                                        <?= is_array($d['tag'] ?? null) ? ($d['tag']['en'] ?? '') : $d['tag'] ?>
+                                    </span>
+                                </td>
                                 <td>
                                     <a href="index.php?tab=destinos&edit_destino=<?= $d['id'] ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                                     <a href="eliminar_slide.php?tipo=destino&id=<?= $d['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar este destino?')"><i class="fas fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <span class="lang-es-field"><?= is_array($d['info'] ?? null) ? ($d['info']['es'] ?? '') : '' ?></span>
+                                    <span class="lang-en-field"><?= is_array($d['info'] ?? null) ? ($d['info']['en'] ?? '') : '' ?></span>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
@@ -269,5 +286,42 @@ if (isset($_GET['edit_destino'])) {
     <?php endif; ?>
 
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const langBtns = document.querySelectorAll('.lang-btn');
+    
+    function setLanguage(lang) {
+        langBtns.forEach(btn => {
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.remove('btn-outline-primary');
+                btn.classList.add('btn-primary', 'active');
+            } else {
+                btn.classList.remove('btn-primary', 'active');
+                btn.classList.add('btn-outline-primary');
+            }
+        });
+
+        const esFields = document.querySelectorAll('.lang-es-field');
+        const enFields = document.querySelectorAll('.lang-en-field');
+
+        if (lang === 'es') {
+            esFields.forEach(el => el.style.setProperty('display', 'block', 'important'));
+            enFields.forEach(el => el.style.setProperty('display', 'none', 'important'));
+        } else {
+            esFields.forEach(el => el.style.setProperty('display', 'none', 'important'));
+            enFields.forEach(el => el.style.setProperty('display', 'block', 'important'));
+        }
+    }
+
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            setLanguage(btn.getAttribute('data-lang'));
+        });
+    });
+
+    setLanguage('es');
+});
+</script>
 </body>
 </html>

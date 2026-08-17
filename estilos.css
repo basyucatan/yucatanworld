@@ -478,7 +478,11 @@ body {
 }
 
 .route-info i { color: var(--accent); }
-
+.route-info em {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--accent);
+}
 .btn-outline {
     width: 100%;
     border: 2px solid var(--primary);

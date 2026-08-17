@@ -82,7 +82,10 @@ if ($tipo === 'slide') {
     $nuevoItem = [
         'id' => $id,
         'titulo' => trim($_POST['titulo'] ?? ''),
-        'tag' => trim($_POST['tag'] ?? ''),
+        'tag' => [
+            'es' => trim($_POST['tag_es'] ?? ''),
+            'en' => trim($_POST['tag_en'] ?? '')
+        ],
         'info' => [
             'es' => trim($_POST['info_es'] ?? ''),
             'en' => trim($_POST['info_en'] ?? '')

@@ -1,8 +1,7 @@
 /* ==========================================================================
-   CONFIGURACIÓN Y DATA DE CONTENIDOS (FÁCILMENTE EDITABLE)
+   CONFIGURACIÓN Y DATA DE CONTENIDOS
    ========================================================================== */
 
-// Información Sucursal
 const DATA_SUCURSAL = {
     direccion: "Calle 39 No. 460 local 7, Col. Máximo Ancona, Mérida, Yucatán, México",
     telefono: "+52 999 243 5427",
@@ -14,41 +13,69 @@ const DATA_SUCURSAL = {
 
 const FALLBACK_IMAGE = 'img/imgFallida.jpg';
 
+// Estado global de la aplicación
+let currentLang = 'es';
+let autoSlideInterval = null;
+
+// Intersection Observer único para animaciones
+const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            scrollObserver.unobserve(entry.target); // Dejar de observar una vez animado
+        }
+    });
+}, { threshold: 0.15 });
+
 /* ==========================================================================
-   INICIALIZACIÓN Y LÓGICA DE INTERACCIÓN
+   INICIALIZACIÓN
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // Carga inicial de datos desde el endpoint PHP
-    cargarDatosLanding();
-
-    // RENDER Datos de Sucursal
     renderSucursal();
+    initHeaderScroll();
+    initMobileMenu();
+    initLangSelector();
+    initCotizarDelegation();
+    observeElements();
+    
+    // Carga de datos asíncronos
+    cargarDatosLanding();
+});
 
-    // Lógica del Header Sticky
+/* ==========================================================================
+   LÓGICA DE INTERACCIÓN Y EVENTOS
+   ========================================================================== */
+
+function observeElements(container = document) {
+    container.querySelectorAll('[data-animate]').forEach(el => scrollObserver.observe(el));
+}
+
+function initHeaderScroll() {
     const header = document.getElementById('mainHeader');
+    if (!header) return;
+    
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header?.classList.add('scrolled');
-        } else {
-            header?.classList.remove('scrolled');
-        }
-    });
+        header.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+}
 
-    // Lógica Menú Móvil
+function initMobileMenu() {
     const mobileToggle = document.getElementById('mobileToggle');
     const mobileClose = document.getElementById('mobileClose');
     const mobilePanel = document.getElementById('mobilePanel');
 
-    mobileToggle?.addEventListener('click', () => mobilePanel?.classList.add('open'));
-    mobileClose?.addEventListener('click', () => mobilePanel?.classList.remove('open'));
-    document.querySelectorAll('.mobile-link').forEach(link => {
-        link.addEventListener('click', () => mobilePanel?.classList.remove('open'));
-    });
+    const toggleMenu = (open) => mobilePanel?.classList.toggle('open', open);
 
-    // Lógica Idioma ES / EN
-    let currentLang = 'es';
+    mobileToggle?.addEventListener('click', () => toggleMenu(true));
+    mobileClose?.addEventListener('click', () => toggleMenu(false));
+    
+    document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => toggleMenu(false));
+    });
+}
+
+function initLangSelector() {
     const langBtns = document.querySelectorAll('.lang-btn');
 
     langBtns.forEach(btn => {
@@ -58,31 +85,34 @@ document.addEventListener('DOMContentLoaded', () => {
             langBtns.forEach(b => b.classList.remove('active'));
             document.querySelectorAll(`[data-lang="${currentLang}"]`).forEach(b => b.classList.add('active'));
 
-            const esElements = document.querySelectorAll('.lang-es');
-            const enElements = document.querySelectorAll('.lang-en');
-
-            if (currentLang === 'en') {
-                esElements.forEach(el => el.style.display = 'none');
-                enElements.forEach(el => el.style.display = 'inline-block');
-            } else {
-                enElements.forEach(el => el.style.display = 'none');
-                esElements.forEach(el => el.style.display = 'inline-block');
-            }
+            aplicarIdiomaVisibilidad();
         });
     });
+}
 
-    // Vincular botones "Cotizar" para rellenar destino
-    vincularBotonesCotizar();
+function aplicarIdiomaVisibilidad() {
+    const esElements = document.querySelectorAll('.lang-es');
+    const enElements = document.querySelectorAll('.lang-en');
 
-    // Observer Animaciones
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('animated');
-        });
-    }, { threshold: 0.15 });
+    const displayEs = currentLang === 'es' ? 'inline-block' : 'none';
+    const displayEn = currentLang === 'en' ? 'inline-block' : 'none';
 
-    document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
-});
+    esElements.forEach(el => el.style.display = displayEs);
+    enElements.forEach(el => el.style.display = displayEn);
+}
+
+function initCotizarDelegation() {
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-dest]');
+        if (!btn) return;
+        
+        const destName = btn.getAttribute('data-dest');
+        const destinoInput = document.getElementById('destino_interes');
+        if (destinoInput) {
+            destinoInput.value = destName;
+        }
+    });
+}
 
 /* ==========================================================================
    CARGA DE DATOS ASÍNCRONA
@@ -91,22 +121,23 @@ document.addEventListener('DOMContentLoaded', () => {
 async function cargarDatosLanding() {
     try {
         const response = await fetch('api_slides.php');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
         const data = await response.json();
-
         renderCarousel(data.slides || []);
         renderDestinos(data.destinos || []);
     } catch (error) {
         console.error('Error al cargar la información:', error);
         renderCarousel([]);
         renderDestinos([]);
+    } finally {
+        // Asegurar que el contenido inyectado respete el idioma activo
+        aplicarIdiomaVisibilidad();
     }
 }
 
 /* ==========================================================================
-   FUNCIONES AUXILIARES DE RENDERIZADO
+   RENDERIZADO Y COMPONENTES
    ========================================================================== */
 
 function renderSucursal() {
@@ -131,14 +162,12 @@ function renderCarousel(slides = []) {
     const container = document.getElementById('carouselContainer');
     if (!container) return;
 
-    const listaSlides = Array.isArray(slides) ? slides : [];
-
-    if (listaSlides.length === 0) {
+    if (!Array.isArray(slides) || slides.length === 0) {
         container.innerHTML = '<p class="text-center">No hay promociones disponibles.</p>';
         return;
     }
 
-    container.innerHTML = listaSlides.map((slide, idx) => {
+    container.innerHTML = slides.map((slide, idx) => {
         const rutaImg = slide.imagen || FALLBACK_IMAGE;
         return `
             <div class="slide ${idx === 0 ? 'active' : ''}" style="background-image: url('${rutaImg}'), url('${FALLBACK_IMAGE}');">
@@ -173,41 +202,49 @@ function renderDestinos(destinos = []) {
     const grid = document.getElementById('gridDestinos');
     if (!grid) return;
 
-    const listaDestinos = Array.isArray(destinos) ? destinos : [];
-
-    if (listaDestinos.length === 0) {
+    if (!Array.isArray(destinos) || destinos.length === 0) {
         grid.innerHTML = '<p class="text-center">No hay destinos disponibles por el momento.</p>';
         return;
     }
 
-    grid.innerHTML = listaDestinos.map(dest => `
-        <article class="card-destino" data-animate>
-            <div class="card-media">
-                <img src="${dest.imagen || FALLBACK_IMAGE}" alt="${dest.titulo || ''}" onerror="this.onerror=null; this.src='${FALLBACK_IMAGE}';">
-                <span class="tag-flight">${dest.tag || ''}</span>
-            </div>
-            <div class="card-body">
-                <h3>${dest.titulo || ''}</h3>
-                <p class="route-info"><i class="fas fa-star"></i> 
-                    <span class="lang-es">${dest.info?.es || ''}</span>
-                    <span class="lang-en">${dest.info?.en || ''}</span>
-                </p>
-                <a href="#contacto" class="btn btn-outline" data-dest="${dest.titulo || ''}">
-                    <span class="lang-es">Cotizar Viaje</span>
-                    <span class="lang-en">Quote Trip</span>
-                </a>
-            </div>
-        </article>
-    `).join('');
+    grid.innerHTML = destinos.map(dest => {
+        const titulo = dest.titulo || '';
+        const tagEs = typeof dest.tag === 'object' ? (dest.tag?.es || '') : (dest.tag || '');
+        const tagEn = typeof dest.tag === 'object' ? (dest.tag?.en || '') : (dest.tag || '');
+        
+        const rawInfo = dest.info?.es || dest.info?.en || '';
+        const infoLimpia = rawInfo.replace(/<\/?[^>]+(>|$)/g, '');
 
-    // Re-vincular elementos recién creados con el Observer de animaciones
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('animated');
-        });
-    }, { threshold: 0.15 });
+        const mensajeTexto = `Hola, me interesa recibir información sobre el paquete a ${titulo} (${infoLimpia})`;
+        const urlWa = `https://wa.me/529961010862?text=${encodeURIComponent(mensajeTexto)}`;
 
-    grid.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+        return `
+            <article class="card-destino" data-animate>
+                <div class="card-media">
+                    <img src="${dest.imagen || FALLBACK_IMAGE}" alt="${titulo}" onerror="this.onerror=null; this.src='${FALLBACK_IMAGE}';">
+                    <span class="tag-flight">
+                        <span class="lang-es">${tagEs}</span>
+                        <span class="lang-en">${tagEn}</span>
+                    </span>
+                </div>
+                <div class="card-body">
+                    <h3>${titulo}</h3>
+                    <p class="route-info"><i class="fas fa-star"></i> 
+                        <span class="lang-es">${dest.info?.es || ''}</span>
+                        <span class="lang-en">${dest.info?.en || ''}</span>
+                    </p>
+                    <a href="${urlWa}" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                         <i class="fas fa-heart"></i>
+                        <span class="lang-es">Lo quiero !</span>
+                        <span class="lang-en">I love it !</span>
+                    </a>
+                </div>
+            </article>
+        `;
+    }).join('');
+
+    // Observar únicamente las nuevas cards generadas
+    observeElements(grid);
 }
 
 function iniciarLogicaCarousel() {
@@ -216,7 +253,6 @@ function iniciarLogicaCarousel() {
     const nextBtn = document.getElementById('nextSlide');
     const dotsContainer = document.getElementById('carouselDots');
     let currentSlide = 0;
-    let autoSlideInterval;
 
     if (slides.length === 0) return;
 
@@ -254,24 +290,19 @@ function iniciarLogicaCarousel() {
         resetAutoSlide();
     };
 
-    const startAutoSlide = () => { autoSlideInterval = setInterval(nextSlide, 5000); };
-    const resetAutoSlide = () => { clearInterval(autoSlideInterval); startAutoSlide(); };
+    const startAutoSlide = () => { 
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(nextSlide, 5000); 
+    };
 
-    nextBtn?.addEventListener('click', () => { nextSlide(); resetAutoSlide(); });
-    prevBtn?.addEventListener('click', () => { prevSlide(); resetAutoSlide(); });
+    const resetAutoSlide = () => { 
+        clearInterval(autoSlideInterval); 
+        startAutoSlide(); 
+    };
+
+    // Usar cloneNode o reasignar onclick para prevenir duplicación de listeners si se re-renderiza
+    if (nextBtn) nextBtn.onclick = () => { nextSlide(); resetAutoSlide(); };
+    if (prevBtn) prevBtn.onclick = () => { prevSlide(); resetAutoSlide(); };
 
     startAutoSlide();
-}
-
-function vincularBotonesCotizar() {
-    document.addEventListener('click', (e) => {
-        const btn = e.target.closest('[data-dest]');
-        if (btn) {
-            const destName = btn.getAttribute('data-dest');
-            const destinoInput = document.getElementById('destino_interes');
-            if (destinoInput) {
-                destinoInput.value = destName;
-            }
-        }
-    });
 }

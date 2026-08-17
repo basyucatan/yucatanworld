@@ -131,17 +131,23 @@
         {
             "id": "dest_cdmx",
             "titulo": "CDMX",
-            "tag": "Modernidad",
+            "tag": {
+                "es": "Modernidad",
+                "en": "Modernity"
+            },
             "info": {
-                "es": "Cultura, Gastronomía y Compras",
-                "en": "Culture, Cuisine & Shopping"
+                "es": "Cultura, <em>Gastronomía<\/em> y Compras",
+                "en": "Culture, <em>Cuisine<\/em> & Shopping"
             },
             "imagen": "img\/cdmx.jpg"
         },
         {
             "id": "dest_guadalajara",
             "titulo": "Guadalajara",
-            "tag": "Tradición",
+            "tag": {
+                "es": "Tradición",
+                "en": "Tradition"
+            },
             "info": {
                 "es": "Tequila, Mariachi y Negocios",
                 "en": "Tequila, Mariachi & Business"
@@ -151,7 +157,10 @@
         {
             "id": "dest_monterrey",
             "titulo": "Monterrey",
-            "tag": "Progreso",
+            "tag": {
+                "es": "Progreso",
+                "en": "Progress"
+            },
             "info": {
                 "es": "Montañas, Parques y Modernidad",
                 "en": "Mountains, Parks & Modernity"
@@ -161,7 +170,10 @@
         {
             "id": "dest_oaxaca",
             "titulo": "Oaxaca",
-            "tag": "Cultura",
+            "tag": {
+                "es": "Cultura",
+                "en": "Culture"
+            },
             "info": {
                 "es": "Mezcal, Tradición y Arte",
                 "en": "Mezcal, Tradition & Art"
@@ -171,7 +183,10 @@
         {
             "id": "dest_vallarta",
             "titulo": "Puerto Vallarta",
-            "tag": "Playa",
+            "tag": {
+                "es": "Playa",
+                "en": "Beach"
+            },
             "info": {
                 "es": "Atardeceres, Playa y Relax",
                 "en": "Sunsets, Beach & Relaxation"
@@ -181,7 +196,10 @@
         {
             "id": "dest_chiapas",
             "titulo": "Chiapas",
-            "tag": "Aventura",
+            "tag": {
+                "es": "Aventura",
+                "en": "Adventure"
+            },
             "info": {
                 "es": "Cañón del Sumidero y Selva",
                 "en": "Sumidero Canyon & Jungle"
