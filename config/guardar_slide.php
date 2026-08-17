@@ -50,7 +50,6 @@ if ($tipo === 'slide') {
             'es' => trim($_POST['btn_es'] ?? ''),
             'en' => trim($_POST['btn_en'] ?? '')
         ],
-        'destinoTag' => trim($_POST['destinoTag'] ?? ''),
         'imagen' => $rutaImagen
     ];
 

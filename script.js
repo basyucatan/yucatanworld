@@ -156,7 +156,7 @@ function renderCarousel(slides = []) {
                         <span class="lang-es">${slide.descripcion?.es || ''}</span>
                         <span class="lang-en">${slide.descripcion?.en || ''}</span>
                     </p>
-                    <a href="#contacto" class="btn btn-accent btn-slide" data-dest="${slide.destinoTag || ''}">
+                    <a href="#contacto" class="btn btn-accent btn-slide">
                         <i class="fas fa-paper-plane"></i> 
                         <span class="lang-es">${slide.btnTexto?.es || ''}</span>
                         <span class="lang-en">${slide.btnTexto?.en || ''}</span>

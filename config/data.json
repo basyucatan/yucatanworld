@@ -19,8 +19,7 @@
                 "es": "Solicitar Oferta",
                 "en": "Claim Deal"
             },
-            "destinoTag": "CDMX - Oferta Especial",
-            "imagen": "img\/slide_1786929300.jpg"
+            "imagen": "img\/cdmx.jpg"
         },
         {
             "id": "slide_guadalajara",
@@ -41,7 +40,6 @@
                 "es": "Cotizar Viaje",
                 "en": "Quote Trip"
             },
-            "destinoTag": "Guadalajara - Ruta Tequila",
             "imagen": "img\/guadalajara.jpg"
         },
         {
@@ -63,7 +61,6 @@
                 "es": "Ver Paquetes",
                 "en": "View Packages"
             },
-            "destinoTag": "Monterrey - Escapada Urbana",
             "imagen": "img\/monterrey.jpg"
         },
         {
@@ -85,7 +82,6 @@
                 "es": "Más Información",
                 "en": "More Info"
             },
-            "destinoTag": "Oaxaca - Tour Cultural",
             "imagen": "img\/oaxaca.jpg"
         },
         {
@@ -107,7 +103,6 @@
                 "es": "Cotizar Paquete",
                 "en": "Quote Package"
             },
-            "destinoTag": "Puerto Vallarta - All Inclusive",
             "imagen": "img\/vallarta.jpg"
         },
         {
@@ -129,7 +124,6 @@
                 "es": "Reservar Ahora",
                 "en": "Book Now"
             },
-            "destinoTag": "Chiapas - Ruta Aventura",
             "imagen": "img\/tuxtla.jpg"
         }
     ],

@@ -125,11 +125,6 @@ if (isset($_GET['edit_destino'])) {
                             </div>
                         </div>
 
-                        <div class="mb-2">
-                            <label class="form-label small">Tag de Destino (para Formulario)</label>
-                            <input type="text" class="form-control form-control-sm" name="destinoTag" value="<?= $editSlide['destinoTag'] ?? '' ?>" required>
-                        </div>
-
                         <div class="mb-3">
                             <label class="form-label small">Imagen (Opcional, fallback: img/imgFallida.jpg)</label>
                             <input type="file" class="form-control form-control-sm" name="imagen" accept="image/*">
@@ -157,7 +152,6 @@ if (isset($_GET['edit_destino'])) {
                             <tr>
                                 <th>Imagen</th>
                                 <th>Título (ES)</th>
-                                <th>Tag Destino</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -170,7 +164,6 @@ if (isset($_GET['edit_destino'])) {
                                          onerror="this.onerror=null; this.src='../img/imgFallida.jpg';">
                                 </td>
                                 <td><strong><?= strip_tags($s['titulo']['es']) ?></strong></td>
-                                <td><span class="badge bg-info text-dark"><?= $s['destinoTag'] ?></span></td>
                                 <td>
                                     <a href="index.php?tab=slides&edit_slide=<?= $s['id'] ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                                     <a href="eliminar_slide.php?tipo=slide&id=<?= $s['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar este slide?')"><i class="fas fa-trash"></i></a>
